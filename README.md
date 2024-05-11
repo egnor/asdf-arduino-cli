@@ -1,8 +1,8 @@
 <div align="center">
 
-# asdf-<YOUR TOOL> [![Build](https://github.com/<YOUR GITHUB USERNAME>/asdf-<YOUR TOOL>/actions/workflows/build.yml/badge.svg)](https://github.com/<YOUR GITHUB USERNAME>/asdf-<YOUR TOOL>/actions/workflows/build.yml) [![Lint](https://github.com/<YOUR GITHUB USERNAME>/asdf-<YOUR TOOL>/actions/workflows/lint.yml/badge.svg)](https://github.com/<YOUR GITHUB USERNAME>/asdf-<YOUR TOOL>/actions/workflows/lint.yml)
+# asdf-arduino-cli [![Build](https://github.com/egnor/asdf-arduino-cli/actions/workflows/build.yml/badge.svg)](https://github.com/egnor/asdf-arduino-cli/actions/workflows/build.yml) [![Lint](https://github.com/egnor/asdf-arduino-cli/actions/workflows/lint.yml/badge.svg)](https://github.com/egnor/asdf-arduino-cli/actions/workflows/lint.yml)
 
-[<YOUR TOOL>](<TOOL HOMEPAGE>) plugin for the [asdf version manager](https://asdf-vm.com).
+[arduino-cli](https://github.com/arduino/arduino-cli) plugin for the [asdf version manager](https://asdf-vm.com).
 
 </div>
 
@@ -15,8 +15,6 @@
 
 # Dependencies
 
-**TODO: adapt this section**
-
 - `bash`, `curl`, `tar`, and [POSIX utilities](https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html).
 - `SOME_ENV_VAR`: set this environment variable in your shell config to load the correct version of tool x.
 
@@ -25,25 +23,25 @@
 Plugin:
 
 ```shell
-asdf plugin add <YOUR TOOL>
+asdf plugin add arduino-cli
 # or
-asdf plugin add <YOUR TOOL> https://github.com/<YOUR GITHUB USERNAME>/asdf-<YOUR TOOL>.git
+asdf plugin add arduino-cli https://github.com/egnor/asdf-arduino-cli.git
 ```
 
-<YOUR TOOL>:
+arduino-cli:
 
 ```shell
 # Show all installable versions
-asdf list-all <YOUR TOOL>
+asdf list-all arduino-cli
 
 # Install specific version
-asdf install <YOUR TOOL> latest
+asdf install arduino-cli latest
 
 # Set a version globally (on your ~/.tool-versions file)
-asdf global <YOUR TOOL> latest
+asdf global arduino-cli latest
 
-# Now <YOUR TOOL> commands are available
-<TOOL CHECK>
+# Now arduino-cli commands are available
+arduino-cli version
 ```
 
 Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
@@ -53,8 +51,8 @@ install & manage versions.
 
 Contributions of any kind welcome! See the [contributing guide](contributing.md).
 
-[Thanks goes to these contributors](https://github.com/<YOUR GITHUB USERNAME>/asdf-<YOUR TOOL>/graphs/contributors)!
+[Thanks goes to these contributors](https://github.com/egnor/asdf-arduino-cli/graphs/contributors)!
 
 # License
 
-See [LICENSE](LICENSE) © [<YOUR NAME>](https://github.com/<YOUR GITHUB USERNAME>/)
+See [LICENSE](LICENSE) © [Daniel Egnor](https://github.com/egnor/)

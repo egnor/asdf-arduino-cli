@@ -11,18 +11,18 @@ source "${plugin_dir}/lib/utils.bash"
 mkdir -p "$ASDF_DOWNLOAD_PATH"
 
 case "$(uname -sm)" in
-	"Linux i686") ext="Linux_32bit.tar.gz" ;;
-	"Linux x86_64") ext="Linux_64bit.tar.gz" ;;
-	"Linux armv6l") ext="Linux_ARMv6.tar.gz" ;;
-	"Linux armv7l") ext="Linux_ARMv7.tar.gz" ;;
-	"Linux aarch64") ext="Linux_ARM64.tar.gz" ;;
-	"Darwin x86_64") ext="macOS_64bit.tar.gz" ;;
-	"Darwin arm64") ext="macOS_ARM64.tar.gz" ;;
-	"MINGW32_NT-6.2 i686") ext="Windows_32bit.zip" ;;
-	"MINGW64_NT-6.2 x86_64") ext="Windows_64bit.zip" ;;
-	"WSL2 i686") ext="Windows_32bit.zip" ;;
-	"WSL2 x86_64") ext="Windows_64bit.zip" ;;
-	*) fail "asdf-$TOOL_NAME does not support arch '$(uname -sm)'." ;;
+"Linux i686") ext="Linux_32bit.tar.gz" ;;
+"Linux x86_64") ext="Linux_64bit.tar.gz" ;;
+"Linux armv6l") ext="Linux_ARMv6.tar.gz" ;;
+"Linux armv7l") ext="Linux_ARMv7.tar.gz" ;;
+"Linux aarch64") ext="Linux_ARM64.tar.gz" ;;
+"Darwin x86_64") ext="macOS_64bit.tar.gz" ;;
+"Darwin arm64") ext="macOS_ARM64.tar.gz" ;;
+"MINGW32_NT-6.2 i686") ext="Windows_32bit.zip" ;;
+"MINGW64_NT-6.2 x86_64") ext="Windows_64bit.zip" ;;
+"WSL2 i686") ext="Windows_32bit.zip" ;;
+"WSL2 x86_64") ext="Windows_64bit.zip" ;;
+*) fail "asdf-$TOOL_NAME does not support arch '$(uname -sm)'." ;;
 esac
 
 archive_name="${TOOL_NAME}_${ASDF_INSTALL_VERSION}_${ext}"
@@ -35,11 +35,11 @@ curl "${curl_opts[@]}" -o "$archive_path" -C - "$url" ||
 	fail "Could not download $url"
 
 # Extract contents of release file into the download directory
-echo "* Extracting into ${ASDF_DOWNLOAD_PATH}..."
+echo "* Extracting into ${ASDF_DOWNLOAD_PATH}/..."
 case "$archive_name" in
-	*.zip) unzip -d "$ASDF_DOWNLOAD_PATH" "$archive_path" || fail "Could not extract $archive_name" ;;
-	*.tar.gz) tar -xzf "$archive_path" -C "$ASDF_DOWNLOAD_PATH" || fail "Could not extract $archive_name" ;;
-	*) fail "Unknown file extension for $archive_name" ;;
+*.zip) unzip -d "$ASDF_DOWNLOAD_PATH" "$archive_path" || fail "Could not extract $archive_name" ;;
+*.tar.gz) tar -xzf "$archive_path" -C "$ASDF_DOWNLOAD_PATH" || fail "Could not extract $archive_name" ;;
+*) fail "Unknown file extension for $archive_name" ;;
 esac
 
 # Remove the release file since we don't need to keep it

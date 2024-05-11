@@ -22,6 +22,6 @@ bin_path="${ASDF_INSTALL_PATH%/bin}/bin"
 		test -f "$bin_path/${TOOL_NAME}.exe" ||
 		fail "No $bin_path/$TOOL_NAME executable found"
 ) || (
-	rm -rf "$bin_path/" &&
-	fail "An error occurred while installing $TOOL_NAME $ASDF_INSTALL_VERSION"
+	rm -rf "${bin_path:?}/" &&
+		fail "An error occurred while installing $TOOL_NAME $ASDF_INSTALL_VERSION"
 )

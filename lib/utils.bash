@@ -4,7 +4,6 @@ set -euo pipefail
 
 GH_REPO="https://github.com/arduino/arduino-cli"
 TOOL_NAME="arduino-cli"
-TOOL_TEST="arduino-cli version"
 
 fail() {
 	echo -e "asdf-$TOOL_NAME: $*"

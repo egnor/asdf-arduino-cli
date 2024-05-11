@@ -35,9 +35,10 @@ curl "${curl_opts[@]}" -o "$archive_path" -C - "$url" ||
 	fail "Could not download $url"
 
 # Extract contents of release file into the download directory
+echo "* Extracting into ${ASDF_DOWNLOAD_PATH}..."
 case "$archive_name" in
 	*.zip) unzip -d "$ASDF_DOWNLOAD_PATH" "$archive_path" || fail "Could not extract $archive_name" ;;
-	*.tar.gz) tar -xzf "$archive_path" -C "$ASDF_DOWNLOAD_PATH" --strip-components=1 || fail "Could not extract $archive_name" ;;
+	*.tar.gz) tar -xzf "$archive_path" -C "$ASDF_DOWNLOAD_PATH" || fail "Could not extract $archive_name" ;;
 	*) fail "Unknown file extension for $archive_name" ;;
 esac
 

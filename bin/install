@@ -12,15 +12,16 @@ if [ "$ASDF_INSTALL_TYPE" != "version" ]; then
 	fail "asdf-$TOOL_NAME supports release installs only"
 fi
 
-bin_path="${ASDF_INSTALL_PATH%/bin}/bin/"
+bin_path="${ASDF_INSTALL_PATH%/bin}/bin"
 
 (
-	mkdir -p "${bin_path}"
-	cp -r "$ASDF_DOWNLOAD_PATH"/* "$bin_path"
-	text -x "$bin_path/$TOOL_NAME" ||
+	mkdir -p "${bin_path}/"
+	echo "* Installing into $bin_path/..."
+	cp -r "$ASDF_DOWNLOAD_PATH"/* "$bin_path"/
+	test -x "$bin_path/$TOOL_NAME" ||
 		test -f "$bin_path/${TOOL_NAME}.exe" ||
 		fail "No $bin_path/$TOOL_NAME executable found"
 ) || (
-	rm -rf "$bin_path" &&
+	rm -rf "$bin_path/" &&
 	fail "An error occurred while installing $TOOL_NAME $ASDF_INSTALL_VERSION"
 )

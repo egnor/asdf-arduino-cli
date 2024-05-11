@@ -25,20 +25,21 @@ case "$(uname -sm)" in
 	*) fail "asdf-$TOOL_NAME does not support arch '$(uname -sm)'." ;;
 esac
 
-release_file="$ASDF_DOWNLOAD_PATH/${TOOL_NAME}_${ASDF_INSTALL_VERSION}_${ext}"
+archive_name="${TOOL_NAME}_${ASDF_INSTALL_VERSION}_${ext}"
+archive_path="$ASDF_DOWNLOAD_PATH/$archive_name"
 
 # Download tar.gz file to the download directory
-url="$GH_REPO/releases/download/v$ASDF_INSTALL_VERSION/$release_file"
-echo "* Downloading ${release_file}..."
-curl "${curl_opts[@]}" -o "$release_file" -C - "$url" ||
+url="$GH_REPO/releases/download/v$ASDF_INSTALL_VERSION/$archive_name"
+echo "* Downloading ${archive_name}..."
+curl "${curl_opts[@]}" -o "$archive_path" -C - "$url" ||
 	fail "Could not download $url"
 
 # Extract contents of release file into the download directory
-case "$release_file" in
-	*.zip) unzip -d "$ASDF_DOWNLOAD_PATH" "$release_file" || fail "Could not extract $release_file" ;;
-	*.tar.gz) tar -xzf "$release_file" -C "$ASDF_DOWNLOAD_PATH" --strip-components=1 || fail "Could not extract $release_file" ;;
-	*) fail "Unknown file extension for $release_file" ;;
+case "$archive_name" in
+	*.zip) unzip -d "$ASDF_DOWNLOAD_PATH" "$archive_path" || fail "Could not extract $archive_name" ;;
+	*.tar.gz) tar -xzf "$archive_path" -C "$ASDF_DOWNLOAD_PATH" --strip-components=1 || fail "Could not extract $archive_name" ;;
+	*) fail "Unknown file extension for $archive_name" ;;
 esac
 
 # Remove the release file since we don't need to keep it
-rm "$release_file"
+rm "$archive_path"

@@ -28,7 +28,10 @@ esac
 release_file="$ASDF_DOWNLOAD_PATH/${TOOL_NAME}_${ASDF_INSTALL_VERSION}_${ext}"
 
 # Download tar.gz file to the download directory
-download_release "$ASDF_INSTALL_VERSION" "$release_file"
+url="$GH_REPO/releases/download/v$ASDF_INSTALL_VERSION/$release_file"
+echo "* Downloading ${release_file}..."
+curl "${curl_opts[@]}" -o "$release_file" -C - "$url" ||
+	fail "Could not download $url"
 
 # Extract contents of release file into the download directory
 case "$release_file" in

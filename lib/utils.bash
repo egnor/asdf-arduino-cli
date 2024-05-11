@@ -31,39 +31,3 @@ list_github_tags() {
 list_all_versions() {
 	list_github_tags
 }
-
-download_release() {
-	local version filename basename url
-	version="$1"
-	filename="$2"
-
-	basename="${filename##*/}"
-	url="$GH_REPO/releases/download/v${version}/${basename}"
-
-	echo "* Downloading ${basename}..."
-	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
-}
-
-install_version() {
-	local install_type="$1"
-	local version="$2"
-	local install_path="${3%/bin}/bin"
-
-	if [ "$install_type" != "version" ]; then
-		fail "asdf-$TOOL_NAME supports release installs only"
-	fi
-
-	(
-		mkdir -p "$install_path"
-		cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
-
-		test -x "$install_path/$TOOL_NAME" ||
-			test -f "$install_path/$TOOL_NAME.exe" ||
-			fail "No $install_path/$TOOL_NAME executable found."
-
-		echo "$TOOL_NAME $version installation was successful!"
-	) || (
-		rm -rf "$install_path"
-		fail "An error occurred while installing $TOOL_NAME $version."
-	)
-}

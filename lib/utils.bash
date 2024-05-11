@@ -33,13 +33,14 @@ list_all_versions() {
 }
 
 download_release() {
-	local version filename url
+	local version filename basename url
 	version="$1"
 	filename="$2"
 
-	url="$GH_REPO/archive/v${version}.tar.gz"
+	basename="${filename##*/}"
+	url="$GH_REPO/releases/download/v${version}/${basename}"
 
-	echo "* Downloading $TOOL_NAME release $version..."
+	echo "* Downloading ${basename}..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
 }
 
@@ -56,9 +57,9 @@ install_version() {
 		mkdir -p "$install_path"
 		cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 
-		local tool_cmd
-		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
-		test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
+		test -x "$install_path/$TOOL_NAME" ||
+			test -f "$install_path/$TOOL_NAME.exe" ||
+			fail "No $install_path/$TOOL_NAME executable found."
 
 		echo "$TOOL_NAME $version installation was successful!"
 	) || (

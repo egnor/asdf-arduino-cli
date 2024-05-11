@@ -23,8 +23,6 @@
 Plugin:
 
 ```shell
-asdf plugin add arduino-cli
-# or
 asdf plugin add arduino-cli https://github.com/egnor/asdf-arduino-cli.git
 ```
 

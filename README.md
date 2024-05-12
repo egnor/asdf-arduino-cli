@@ -44,8 +44,9 @@ asdf global arduino-cli latest
 arduino-cli version
 ```
 
-Check the [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
-install & manage versions.
+See [asdf](https://asdf-vm.com/guide/getting-started.html)
+and/or [mise](https://mise.jdx.dev/getting-started.html) documentation
+for more on installing and managing versions.
 
 # Configuration
 

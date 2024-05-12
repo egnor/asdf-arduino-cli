@@ -49,12 +49,12 @@ install & manage versions.
 
 # Configuration
 
-Note! By default, `arduino-cli` stores configuration and cache files in
+By default, `arduino-cli` stores configuration and cache files in
 `~/.arduino15` and sketches in `~/Arduino`. If you're using a version
 manager you probably want something more hermetic; consider setting
 `$ARDUINO_DIRECTORIES_DATA`, `$ARDUINO_DIRECTORIES_USER`,
 `$ARDUINO_CONFIG_FILE`, and/or
-([other variables](https://arduino.github.io/arduino-cli/0.35/configuration/))
+[other variables](https://arduino.github.io/arduino-cli/0.35/configuration/)
 to local project-specific directories.
 
 If you're using mise, you can put something like this in `.mise.toml`:
@@ -66,15 +66,13 @@ ARDUINO_DIRECTORIES_USER = "{{config_root}}/arduino/user"
 ARDUINO_CONFIG_FILE = "{{config_root}}"
 ```
 
-(You'd then list `arduino/` in `.gitignore`.) Note that `$ARDUINO_CONFIG_FILE`
+(You'd likely want `arduino/` in `.gitignore`.) Note that `$ARDUINO_CONFIG_FILE`
 [points to a directory, not the config file itself](https://github.com/arduino/arduino-cli/issues/753);
-the file must be named `arduino-config.{yaml,toml,json,...}`.
+the actual file must be named `arduino-config.{yaml,toml,json,...}`.
 
 # Contributing
 
 Contributions of any kind are welcome! See the [contributing guide](contributing.md).
-
-[Thanks goes to these contributors](https://github.com/egnor/asdf-arduino-cli/graphs/contributors)!
 
 # License
 

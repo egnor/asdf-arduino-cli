@@ -62,14 +62,16 @@ If you're using mise, you can put something like this in `.mise.toml`:
 
 ```toml
 [env]
-ARDUINO_DIRECTORIES_DATA = "{{config_root}}/arduino/data"
-ARDUINO_DIRECTORIES_USER = "{{config_root}}/arduino/user"
+ARDUINO_DIRECTORIES_DATA = "{{config_root}}/arduino_data"
+ARDUINO_DIRECTORIES_USER = "{{config_root}}/arduino_user"
 ARDUINO_CONFIG_FILE = "{{config_root}}"
 ```
 
-(You'd likely want `arduino/` in `.gitignore`.) Note that `$ARDUINO_CONFIG_FILE`
-[points to a directory, not the config file itself](https://github.com/arduino/arduino-cli/issues/753);
-the actual file must be named `arduino-config.{yaml,toml,json,...}`.
+You'd likely want `arduino_data/` in `.gitignore`.
+
+Note that `$ARDUINO_CONFIG_FILE` [points to a directory, not the config file
+itself](https://github.com/arduino/arduino-cli/issues/753);
+the actual file must be named `arduino-cli.{yaml,toml,json,...}`.
 
 # Contributing
 
